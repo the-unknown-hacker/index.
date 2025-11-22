@@ -1,10 +1,22 @@
-function send_mail(){
-    let parameters = {
-        name: document.getElementById("name").value,
-        subject: document.getElementById("subject").value,
-        message: document.getElementById("message").value,
-        email: document.getElementById("email").value
+function send_mail() {
+    const name = document.querySelector('input[placeholder="Name"]').value;
+    const email = document.querySelector('input[placeholder="Email"]').value;
+    const message = document.querySelector('textarea[placeholder="Message"]').value;
+
+    if (!name || !email || !message) {
+        alert("Fill all the fields.");
+        return;
     }
-    
-    emailjs.send("service_6w88c3i", "template_4jjxmdb", parameters).then(alert("Mail sent successfully !!")) 
+
+    emailjs.send("service_6w88c3i", "template_mob4dza", {
+        user_name: name,
+        user_email: email,
+        user_message: message
+    })
+    .then(() => {
+        alert("Message sent successfully!");
+    }, (error) => {
+        alert("Failed to send message.");
+        console.log(error);
+    });
 }

@@ -1,4 +1,8 @@
 function send_mail() {
+    const btn = document.querySelector('.cta-btn');
+    btn.disabled = true;
+    btn.innerText = "Sending...";
+
     const subject = document.querySelector('input[placeholder="Subject"]').value;
     const name = document.querySelector('input[placeholder="Name"]').value;
     const email = document.querySelector('input[placeholder="Email"]').value;
@@ -6,6 +10,8 @@ function send_mail() {
 
     if (!name || !email || !message || !subject) {
         alert("Fill all the fields.");
+        btn.disabled = false;
+        btn.innerText = "Send Message";
         return;
     }
 
@@ -17,8 +23,14 @@ function send_mail() {
     })
     .then(() => {
         alert("Message sent successfully!");
-    }, (error) => {
+        btn.disabled = false;
+        btn.innerText = "Send Message";
+    })
+    .catch((error) => {
         alert("Failed to send message.");
         console.log(error);
+        btn.disabled = false;
+        btn.innerText = "Send Message";
     });
 }
+

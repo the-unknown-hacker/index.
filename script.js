@@ -1,5 +1,5 @@
 function send_mail() {
-    const Name = document.querySelector('input[placeholder="Name"]').value;
+    const name = document.querySelector('input[placeholder="Name"]').value;
     const email = document.querySelector('input[placeholder="Email"]').value;
     const message = document.querySelector('textarea[placeholder="Message"]').value;
 

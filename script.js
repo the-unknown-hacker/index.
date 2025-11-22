@@ -1,8 +1,12 @@
 function send_mail() {
     const btn = document.querySelector('.cta-btn');
 
-    // Block further clicks instantly
+    // Disable button for 2 seconds immediately
     btn.disabled = true;
+    setTimeout(() => {
+        btn.disabled = false;
+    }, 2000);
+
     btn.style.opacity = "0.6";
     btn.style.cursor = "not-allowed";
     btn.innerText = "Sending...";
@@ -14,10 +18,9 @@ function send_mail() {
 
     if (!name || !email || !message || !subject) {
         alert("Fill all the fields.");
-        btn.disabled = false;
+        btn.innerText = "Send Message";
         btn.style.opacity = "1";
         btn.style.cursor = "pointer";
-        btn.innerText = "Send Message";
         return;
     }
 
@@ -30,26 +33,22 @@ function send_mail() {
     .then(() => {
         alert("Message sent successfully!");
 
-        // CLEAR THE FORM HERE
+        // Clear form
         document.getElementById("name").value = "";
         document.getElementById("email").value = "";
         document.getElementById("subject").value = "";
         document.getElementById("message").value = "";
 
-        // Reset button
-        btn.disabled = false;
+        btn.innerText = "Send Message";
         btn.style.opacity = "1";
         btn.style.cursor = "pointer";
-        btn.innerText = "Send Message";
     })
     .catch((error) => {
         alert("Failed to send message.");
         console.log(error);
 
-        btn.disabled = false;
+        btn.innerText = "Send Message";
         btn.style.opacity = "1";
         btn.style.cursor = "pointer";
-        btn.innerText = "Send Message";
     });
 }
-

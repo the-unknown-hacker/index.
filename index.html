@@ -313,9 +313,19 @@
     <div class="form-group">
         <textarea id="message" placeholder="Message" rows="5"></textarea>
     </div>
-
-    <div style="text-align: center;">
-        <button type="button" onclick="send_mail()" class="cta-btn">Send Message</button>
+    <div id="popup" style="
+    display:none;
+    position:fixed;
+    top:50%; left:50%;
+    transform:translate(-50%, -50%);
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 20px rgba(0,0,0,0.3);
+    font-size:18px;
+    text-align:center;">
+    <span id="popup-text"></span><br><br>
+    <button onclick="closePopup()">OK</button>
     </div>
     </form>
 

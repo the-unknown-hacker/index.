@@ -1,12 +1,13 @@
 function send_mail(event) {
     if (event) event.preventDefault(); // Stop form auto-submit
+    
+    const btn = document.querySelector('.cta-btn'); // MUST be here before using it
+
     // Disable button immediately
     btn.disabled = true;
     btn.style.opacity = "0.6";
     btn.style.cursor = "not-allowed";
     btn.innerText = "Sending...";
-
-    const btn = document.querySelector('.cta-btn');
 
     const subject = document.getElementById("subject").value.trim();
     const name = document.getElementById("name").value.trim();
@@ -17,7 +18,6 @@ function send_mail(event) {
     if (!name || !email || !message || !subject) {
         alert("Fill all the fields.");
 
-        // Wait 5 seconds, then re-enable button
         setTimeout(() => {
             btn.disabled = false;
             btn.style.opacity = "1";
@@ -35,12 +35,10 @@ function send_mail(event) {
         user_message: message
     })
     .then(() => {
-
         alert("Message sent successfully!");
 
-        // Wait 5 seconds after alert
         setTimeout(() => {
-            // Clear form
+            // Clear the form
             document.getElementById("name").value = "";
             document.getElementById("email").value = "";
             document.getElementById("subject").value = "";
@@ -58,7 +56,6 @@ function send_mail(event) {
         console.log(error);
         alert("Failed to send message.");
 
-        // Wait 5 seconds before re-enabling
         setTimeout(() => {
             btn.disabled = false;
             btn.style.opacity = "1";

@@ -1,13 +1,12 @@
 function send_mail(event) {
     if (event) event.preventDefault(); // Stop form auto-submit
-
-    const btn = document.querySelector('.cta-btn');
-
     // Disable button immediately
     btn.disabled = true;
     btn.style.opacity = "0.6";
     btn.style.cursor = "not-allowed";
     btn.innerText = "Sending...";
+
+    const btn = document.querySelector('.cta-btn');
 
     const subject = document.getElementById("subject").value.trim();
     const name = document.getElementById("name").value.trim();

@@ -28,7 +28,7 @@ function send_mail(event) {
         return;
     }
 
-    emailjs.send("service_6w88c3i", "template_mob4dza", {
+    emailjs.send("service_weajwn7", "template_mob4dza", {
         user_subject: subject,
         user_name: name,
         user_email: email,
